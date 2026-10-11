@@ -34,11 +34,17 @@
   --blue: #0000E1;
   --white: #FFFFFF;
   --tagline-color: rgba(255, 255, 255, .72);
-  --font-size: clamp(1.55rem, 7.2vw, 6rem);
+
+  /* Fluid type: scales with width, but never taller than the screen allows */
+  --font-size: clamp(1.55rem, min(7.2vw, 16vh), 6rem);
   --gap-spread: .55em;
   --gap-word: .3em;
   --ease-out: cubic-bezier(.22, 1, .36, 1);
   --ease-leap: cubic-bezier(.6, -.3, .75, .1);
+
+  /* 3D leap distances in em so they scale with the text */
+  --z-i: 4.8em;
+  --z-a: 5.4em;
 }
 
 *,
@@ -49,11 +55,22 @@
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 html,
 body {
+  width: 100%;
   height: 100%;
+  height: 100dvh;
   background: var(--bg);
   overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .intro {
@@ -63,7 +80,11 @@ body {
   place-items: center;
   background: var(--bg);
   overflow: hidden;
-  padding: 0 4vw;
+  padding:
+    env(safe-area-inset-top)
+    max(4vw, env(safe-area-inset-right))
+    env(safe-area-inset-bottom)
+    max(4vw, env(safe-area-inset-left));
   transition: opacity var(--d-exit) ease;
 }
 
@@ -75,6 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
   font-size: var(--font-size);
   text-align: center;
   transition: opacity 160ms ease;
@@ -88,9 +110,10 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: center;
+  max-width: 100%;
   white-space: nowrap;
   line-height: 1.1;
-  perspective: 900px;
+  perspective: 9.4em;
   perspective-origin: 50% 60%;
   transform-style: preserve-3d;
 }
@@ -139,18 +162,20 @@ body {
   width: max-content;
   transform-origin: 50% 90%;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition:
     transform var(--d-jump) var(--ease-leap),
     opacity calc(var(--d-jump) * .8) ease-in calc(var(--d-jump) * .2);
 }
 
 .is-jump .cut-i {
-  transform: translate3d(-.15em, -.7em, 460px) rotate(-14deg) scale(2.2);
+  transform: translate3d(-.15em, -.7em, var(--z-i)) rotate(-14deg) scale(2.2);
   opacity: 0;
 }
 
 .is-jump .cut-a {
-  transform: translate3d(.15em, -.55em, 520px) rotate(12deg) scale(2.4);
+  transform: translate3d(.15em, -.55em, var(--z-a)) rotate(12deg) scale(2.4);
   opacity: 0;
   transition-delay: 60ms, 120ms;
 }
@@ -191,10 +216,12 @@ body {
 }
 
 .tagline {
+  max-width: 92vw;
   margin-top: .9em;
   font-family: "Gotham", "Montserrat", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: .26em;
+  line-height: 1.5;
   letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--tagline-color);
@@ -236,10 +263,49 @@ body {
   }
 }
 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Very large screens: cap the size so it doesn't get huge */
+@media (min-width: 1600px) {
+  :root {
+    --font-size: clamp(5rem, min(6vw, 16vh), 8rem);
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  :root {
+    --font-size: clamp(1.6rem, min(7.6vw, 16vh), 5rem);
+  }
+}
+
+/* Large phones / small tablets portrait */
+@media (max-width: 768px) {
+  :root {
+    --font-size: clamp(1.45rem, min(8vw, 16vh), 3.6rem);
+    --gap-spread: .5em;
+  }
+
+  .tagline {
+    letter-spacing: .22em;
+    font-size: .28em;
+  }
+}
+
+/* Phones */
 @media (max-width: 520px) {
   :root {
-    --font-size: clamp(1.3rem, 8.6vw, 3rem);
+    --font-size: clamp(1.3rem, min(8.6vw, 16vh), 3rem);
     --gap-spread: .4em;
+    --z-i: 3.6em;
+    --z-a: 4em;
+  }
+
+  .intro {
+    padding-left: max(3vw, env(safe-area-inset-left));
+    padding-right: max(3vw, env(safe-area-inset-right));
   }
 
   .tagline {
@@ -248,6 +314,33 @@ body {
   }
 }
 
+/* Small phones (iPhone SE, older Androids) */
+@media (max-width: 360px) {
+  :root {
+    --font-size: clamp(1.15rem, min(8.4vw, 16vh), 2.4rem);
+    --gap-spread: .34em;
+  }
+
+  .tagline {
+    letter-spacing: .14em;
+    font-size: .32em;
+  }
+}
+
+/* Landscape phones: short screens, so size by height */
+@media (max-height: 480px) and (orientation: landscape) {
+  :root {
+    --font-size: clamp(1.2rem, min(6vw, 15vh), 3rem);
+  }
+
+  .tagline {
+    margin-top: .6em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .intro.reduced *,
   .intro.reduced {
