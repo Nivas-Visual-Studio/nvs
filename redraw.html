@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redraw — NIVAS VISUAL STUDIO</title>
+  <meta name="description" content="Redraw portfolio — NIVAS VISUAL STUDIO.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+
+  <section class="page-intro">
+    <div class="container">
+      <a href="main.html#portfolio" class="back-link reveal">&larr; Back to Portfolio</a>
+      <p class="page-eyebrow reveal">PORTFOLIO / REDRAW</p>
+      <h1 class="page-title reveal">Redraw</h1>
+      <p class="page-lede reveal">Existing artwork rebuilt into clean, precise vector files. Every project below started as a scan, a low-resolution logo, or a rough reference image, and was recreated with sharp lines and consistent detail, ready for both print and digital use.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="gallery-grid reveal">
+        <img src="images/redraw/California Police Batch.svg" alt="Redraw gallery image 1" loading="lazy">
+        <img src="images/redraw/Srinivasan Profile.svg" alt="Redraw gallery image 2" loading="lazy">
+        <img src="images/redraw/Meenakshi College Logo.svg" alt="Redraw gallery image 3" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-paper-dim);">
+    <div class="container">
+      <p class="page-eyebrow reveal">SELECTED PROJECTS</p>
+
+      <div class="project-grid reveal">
+        <div class="project-card">
+          <img src="images/redraw/California Police Batch.svg" alt="Project 01" loading="lazy">
+          <h3 class="project-title">California Police Logo</h3>
+          <p class="project-desc">A scanned logo recreated as a clean, scalable vector file.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="images/redraw/Srinivasan Profile.svg" alt="Project 02" loading="lazy">
+          <h3 class="project-title">Srinivasan Profile</h3>
+          <p class="project-desc">A vector art portrait illustration of Srinivasan featuring a clean, stylized digital recreation alongside a reference photo.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="images/redraw/Meenakshi College Logo.svg" alt="Project 03" loading="lazy">
+          <h3 class="project-title">Meenakshi College Logo</h3>
+          <p class="project-desc">A low-resolution reference image redrawn at full print resolution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand">NIVAS VISUAL STUDIO</p>
+          <p class="footer-tagline">Ideas &rarr; Design &rarr; Identity</p>
+          <p class="footer-services">Logo Design &bull; Redraw &bull; Product Design</p>
+        </div>
+
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/nivas_visuals?stkn=MXJjbTNqYXFpa2Yycw==" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/share/1EwUZqebmU/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.behance.net/srinivachinnad" target="_blank" rel="noopener">Behance</a></li>
+          <li><a href="https://www.linkedin.com/in/nivas-visual-studio-7a949943b" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.fiverr.com/nivas_san_" target="_blank" rel="noopener">Fiverr</a></li>
+          <li><a href="https://www.threads.com/@nivas_visuals" target="_blank" rel="noopener">Threads</a></li>
+          <li><a href="https://pin.it/4zKWXtsOT" target="_blank" rel="noopener">Pinterest</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 <span class="brand-name">NIVAS VISUAL STUDIO</span></span>
+        <button class="back-to-top" type="button">Back to top</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+  (function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var isReload = nav ? nav.type === 'reload'
+                       : performance.navigation && performance.navigation.type === 1;
+
+    if (isReload) {
+      // Don't let the browser restore the old scroll position
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+      // Remove #section from the URL so the browser doesn't jump to it
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+
+      window.scrollTo(0, 0);
+      window.addEventListener('load', function () {
+        window.scrollTo(0, 0);
+      });
+    }
+  })();
+</script>
+</body>
+</html>

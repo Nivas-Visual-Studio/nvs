@@ -1,0 +1,265 @@
+@font-face {
+  font-family: "Decadence Straight";
+  src: url("fonts/DecadenceStraight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --t-jump: 300ms;
+  --t-spread: 450ms;
+  --t-expand: 850ms;
+  --t-tagline: 1450ms;
+  --t-flash: 3450ms;
+  --t-redirect: 3950ms;
+  --t-reduced: 1400ms;
+
+  --d-jump: 650ms;
+  --d-spread: 750ms;
+  --d-expand: 700ms;
+  --d-tagline: 600ms;
+  --d-flash: 420ms;
+  --d-exit: 450ms;
+
+  --bg: #000000;
+  --blue: #0000E1;
+  --white: #FFFFFF;
+  --tagline-color: rgba(255, 255, 255, .72);
+  --font-size: clamp(1.55rem, 7.2vw, 6rem);
+  --gap-spread: .55em;
+  --gap-word: .3em;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-leap: cubic-bezier(.6, -.3, .75, .1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  overflow: hidden;
+  padding: 0 4vw;
+  transition: opacity var(--d-exit) ease;
+}
+
+.intro.is-exit {
+  opacity: 0;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--font-size);
+  text-align: center;
+  transition: opacity 160ms ease;
+}
+
+.is-flash-peak .stage {
+  opacity: 0;
+}
+
+.word {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.1;
+  perspective: 900px;
+  perspective-origin: 50% 60%;
+  transform-style: preserve-3d;
+}
+
+.anchor {
+  font-family: "Decadence Straight", "Times New Roman", serif;
+  font-weight: normal;
+  color: var(--blue);
+  display: block;
+  transition: margin var(--d-spread) var(--ease-out);
+}
+
+.anchor-v,
+.anchor-s {
+  margin-left: 0;
+}
+
+.is-spread .anchor-v,
+.is-spread .anchor-s {
+  margin-left: var(--gap-spread);
+}
+
+.is-expand .anchor-v,
+.is-expand .anchor-s {
+  margin-left: var(--gap-word);
+}
+
+.is-expand .anchor {
+  transition-duration: var(--d-expand);
+}
+
+.slot {
+  display: block;
+  width: calc(var(--w, .45) * 1em);
+  font-family: "Decadence Straight", "Times New Roman", serif;
+  color: var(--blue);
+  transition: width var(--d-spread) var(--ease-out);
+}
+
+.is-spread .slot {
+  width: 0;
+}
+
+.cut {
+  display: block;
+  width: max-content;
+  transform-origin: 50% 90%;
+  will-change: transform, opacity;
+  transition:
+    transform var(--d-jump) var(--ease-leap),
+    opacity calc(var(--d-jump) * .8) ease-in calc(var(--d-jump) * .2);
+}
+
+.is-jump .cut-i {
+  transform: translate3d(-.15em, -.7em, 460px) rotate(-14deg) scale(2.2);
+  opacity: 0;
+}
+
+.is-jump .cut-a {
+  transform: translate3d(.15em, -.55em, 520px) rotate(12deg) scale(2.4);
+  opacity: 0;
+  transition-delay: 60ms, 120ms;
+}
+
+.rest {
+  display: block;
+  width: 0;
+  overflow: hidden;
+  padding: .12em 0;
+  margin: -.12em 0;
+  font-family: "Gotham", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: .62em;
+  letter-spacing: .01em;
+  color: var(--white);
+  transition: width var(--d-expand) var(--ease-out);
+}
+
+.rest-in {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-.5em);
+  padding-left: .08em;
+  transition:
+    opacity var(--d-expand) ease,
+    transform var(--d-expand) var(--ease-out);
+}
+
+.is-expand .rest {
+  width: calc(var(--w, 2) * 1em);
+}
+
+.is-expand .rest-in {
+  opacity: 1;
+  transform: none;
+}
+
+.tagline {
+  margin-top: .9em;
+  font-family: "Gotham", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: .26em;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--tagline-color);
+  opacity: 0;
+  transform: translateY(.8em);
+  transition:
+    opacity var(--d-tagline) ease,
+    transform var(--d-tagline) var(--ease-out);
+}
+
+.is-tagline .tagline {
+  opacity: 1;
+  transform: none;
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, #fff 0%, #fff 35%, #dfe4ff 100%);
+}
+
+.is-flash .flash {
+  animation: flash var(--d-flash) ease-out forwards;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --font-size: clamp(1.3rem, 8.6vw, 3rem);
+    --gap-spread: .4em;
+  }
+
+  .tagline {
+    letter-spacing: .18em;
+    font-size: .3em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro.reduced *,
+  .intro.reduced {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .intro.reduced .flash {
+    display: none;
+  }
+
+  .intro.reduced {
+    transition: opacity 400ms ease !important;
+  }
+}
