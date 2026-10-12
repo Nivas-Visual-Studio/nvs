@@ -399,28 +399,22 @@
 
   <script src="js/script.js"></script>
   <script>
-  (function () {
-    // Stop the browser from restoring the old scroll position
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
+(function () {
+  // Stop the browser from restoring the old scroll position
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
 
-    // Detect a reload
-    var nav = performance.getEntriesByType('navigation')[0];
-    var isReload = nav ? nav.type === 'reload'
-                       : performance.navigation && performance.navigation.type === 1;
+  // On every load (open, run or reload), go to index.html without any #hash
+  var path = location.pathname;
+  var target = path.replace(/[^\/]*$/, '') + 'index.html';
 
-    if (isReload) {
-      // Go to index.html without the #hash (e.g. #portfolio)
-      var path = location.pathname;
-      var target = path.replace(/[^\/]*$/, '') + 'index.html';
-      if (path !== target || location.hash) {
-        location.replace(target);   // replace so Back button doesn't loop
-      } else {
-        window.scrollTo(0, 0);
-      }
-    }
-  })();
-  </script>
+  if (path !== target || location.hash) {
+    location.replace(target);   // replace so the Back button doesn't loop
+  } else {
+    window.scrollTo(0, 0);
+  }
+})();
+</script>
 </body>
 </html>
