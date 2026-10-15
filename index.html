@@ -3,23 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nivas Visual Studio | Portfolio & Creative Studio</title>
-  <meta name="description" content="Welcome to Nivas Visual Studio. Explore our visual art, design, and creative portfolio.">
+  <title>Nivas Visual Studio | Visual Design, Branding & Creative Portfolio</title>
+  <meta name="description" content="Nivas Visual Studio is a creative home for visual design. Explore our portfolio of branding, graphic design and visual art.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://nivasvisualstudio.in/" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <meta name="google-site-verification" content="T27HMMKFLb3zvgQTBLSldwvNvk717t6Sdw0P6hKY0VY" />
   <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nivas Visual Studio">
+  <meta property="og:title" content="Nivas Visual Studio | A Creative Home for Visual Design">
+  <meta property="og:description" content="Explore our portfolio of branding, graphic design and visual art.">
+  <meta property="og:url" content="https://nivasvisualstudio.in/">
+  <meta property="og:image" content="https://nivasvisualstudio.in/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Nivas Visual Studio logo on a black background">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nivas Visual Studio | A Creative Home for Visual Design">
+  <meta name="twitter:description" content="Explore our portfolio of branding, graphic design and visual art.">
+  <meta name="twitter:image" content="https://nivasvisualstudio.in/assets/og-image.jpg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nivasvisualstudio.in/#org",
+        "name": "Nivas Visual Studio",
+        "url": "https://nivasvisualstudio.in/",
+        "logo": "https://nivasvisualstudio.in/assets/favicon.png",
+        "slogan": "A Creative Home for Visual Design"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nivasvisualstudio.in/#website",
+        "url": "https://nivasvisualstudio.in/",
+        "name": "Nivas Visual Studio",
+        "publisher": { "@id": "https://nivasvisualstudio.in/#org" },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
 
   <link rel="preload" href="fonts/DecadenceStraight.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/Gotham-Bold.otf" as="font" type="font/otf" crossorigin>
   <link rel="stylesheet" href="style.css">
 
-  <noscript>
-    <meta http-equiv="refresh" content="0;url=main.html">
-  </noscript>
+  <style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip-link{position:absolute;top:12px;right:12px;z-index:9999;padding:8px 14px;color:#fff;background:#000;border:1px solid #fff;font:14px/1 sans-serif;text-decoration:none;opacity:0;pointer-events:none}
+    .skip-link:focus,.skip-link:hover{opacity:1;pointer-events:auto}
+  </style>
 </head>
 <body>
-  <div class="intro" id="intro" role="img" aria-label="Nivas Visual Studio. A Creative Home for Visual Design">
+  <!-- Crawlable, real link to the main site (no JS or meta-refresh redirect needed) -->
+  <a class="skip-link" href="main.html">Skip intro</a>
+
+  <h1 class="sr-only">Nivas Visual Studio – A Creative Home for Visual Design</h1>
+  <p class="sr-only">Nivas Visual Studio is a creative studio focused on visual design, branding and visual art. Browse our work in the <a href="main.html">portfolio</a>.</p>
+
+  <div class="intro" id="intro">
     <div class="stage" id="stage" aria-hidden="true">
       <div class="word" id="word">
         <span class="anchor">N</span>
@@ -39,6 +87,12 @@
 
     <div class="flash" id="flash"></div>
   </div>
+
+  <noscript>
+    <p style="position:fixed;inset:auto 0 24px 0;text-align:center;color:#fff;font-family:sans-serif">
+      <a href="main.html" style="color:#fff">Enter Nivas Visual Studio</a>
+    </p>
+  </noscript>
 
   <script src="script.js"></script>
 </body>
