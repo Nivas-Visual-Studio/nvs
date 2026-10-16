@@ -67,17 +67,6 @@
   }
   </script>
 
-  <script>
-  // Reloading main.html replays the intro animation
-  (function () {
-    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-    var isReload = nav ? nav.type === 'reload'
-                       : !!(performance.navigation && performance.navigation.type === 1);
-    if (isReload) {
-      location.replace(location.pathname.replace(/[^\/]*$/, '') + 'index.html');
-    }
-  })();
-  </script>
 
   <script>document.documentElement.classList.add('js');</script>
 
