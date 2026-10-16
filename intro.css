@@ -20,7 +20,9 @@
   --t-expand: 850ms;
   --t-tagline: 1450ms;
   --t-flash: 3450ms;
-  --t-redirect: 3950ms;
+  /* Flash peaks ~3576ms, exit fade starts ~3702ms and ends ~4152ms.
+     Redirect fires after the fade has finished. */
+  --t-redirect: 4200ms;
   --t-reduced: 1400ms;
 
   --d-jump: 650ms;
