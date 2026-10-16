@@ -9,22 +9,35 @@
   var cs = getComputedStyle(root);
   var left = false;
 
-  function ms(name) {
+  // Read a CSS time variable (e.g. "450ms" or "0.45s") as milliseconds.
+  // Falls back to `fallback` if the variable is missing or invalid, so a
+  // typo in the CSS can never make a timer fire instantly.
+  function ms(name, fallback) {
     var v = cs.getPropertyValue(name).trim();
-    return v.slice(-2) === "ms" ? parseFloat(v) : parseFloat(v) * 1000;
+    var n = v.slice(-2) === "ms" ? parseFloat(v) : parseFloat(v) * 1000;
+    return isNaN(n) ? (fallback || 0) : n;
   }
 
   function go() {
     if (left) return;
-
     left = true;
+
     window.location.replace(REDIRECT_URL);
   }
 
-  var pf = document.createElement("link");
-  pf.rel = "prefetch";
-  pf.href = REDIRECT_URL;
-  document.head.appendChild(pf);
+  // Warm the cache while the intro plays so main.html appears instantly.
+  [
+    ["prefetch", REDIRECT_URL, null],
+    ["prefetch", "css/style.css", "style"],
+    ["prefetch", "js/script.js", "script"],
+    ["prefetch", "images/hero_bg.jpg", "image"]
+  ].forEach(function (item) {
+    var l = document.createElement("link");
+    l.rel = item[0];
+    l.href = item[1];
+    if (item[2]) l.as = item[2];
+    document.head.appendChild(l);
+  });
 
   function measure() {
     document.querySelectorAll("[data-measure]").forEach(function (el) {
@@ -48,38 +61,43 @@
         "is-tagline"
       );
 
+      var reducedTotal = ms("--t-reduced", 1400);
+
       setTimeout(function () {
         intro.classList.add("is-exit");
-      }, ms("--t-reduced") - 400);
+      }, Math.max(0, reducedTotal - 400));
 
-      setTimeout(go, ms("--t-reduced"));
+      setTimeout(go, reducedTotal);
       return;
     }
 
     var steps = [
-      ["--t-jump", "is-jump"],
-      ["--t-spread", "is-spread"],
-      ["--t-expand", "is-expand"],
-      ["--t-tagline", "is-tagline"],
-      ["--t-flash", "is-flash"]
+      ["--t-jump", "is-jump", 300],
+      ["--t-spread", "is-spread", 450],
+      ["--t-expand", "is-expand", 850],
+      ["--t-tagline", "is-tagline", 1450],
+      ["--t-flash", "is-flash", 3450]
     ];
 
     requestAnimationFrame(function () {
       steps.forEach(function (s) {
         setTimeout(function () {
           intro.classList.add(s[1]);
-        }, ms(s[0]));
+        }, ms(s[0], s[2]));
       });
+
+      var flashAt = ms("--t-flash", 3450);
+      var flashDur = ms("--d-flash", 420);
 
       setTimeout(function () {
         intro.classList.add("is-flash-peak");
-      }, ms("--t-flash") + ms("--d-flash") * 0.3);
+      }, flashAt + flashDur * 0.3);
 
       setTimeout(function () {
         intro.classList.add("is-exit");
-      }, ms("--t-flash") + ms("--d-flash") * 0.6);
+      }, flashAt + flashDur * 0.6);
 
-      setTimeout(go, ms("--t-redirect"));
+      setTimeout(go, ms("--t-redirect", 4200));
     });
   }
 
@@ -110,5 +128,6 @@
     }
   });
 
+  // Safety net: never leave a visitor stuck on the intro
   setTimeout(go, 12000);
 })();
