@@ -3,6 +3,18 @@
 
   var REDIRECT_URL = "main.html";
 
+  // Play the intro only once per browser tab session.
+  try {
+    if (sessionStorage.getItem("nvsIntroPlayed") === "true") {
+      window.location.replace(REDIRECT_URL);
+      return;
+    }
+
+    sessionStorage.setItem("nvsIntroPlayed", "true");
+  } catch (e) {
+    // Continue normally if sessionStorage is unavailable.
+  }
+
   var intro = document.getElementById("intro");
   var root = document.documentElement;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -128,6 +140,6 @@
     }
   });
 
-  // Safety net: never leave a visitor stuck on the intro
+  // Safety net: never leave a visitor stuck on the intro.
   setTimeout(go, 12000);
 })();
