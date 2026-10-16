@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Nivas Visual Studio | Logo Design, Redraw & Product Design">
   <meta name="twitter:description" content="We turn ideas into visual identities. Logo design, redraw and product design studio.">
-  <meta name="twitter:image" content="https://nivasvisualstudio.in/assets/NVS Profile.png">
+  <meta name="twitter:image" content="https://nivasvisualstudio.in/images/hero_bg.jpg">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -34,7 +34,7 @@
         "@type": "ProfessionalService",
         "@id": "https://nivasvisualstudio.in/#org",
         "name": "Nivas Visual Studio",
-        "url": "https://nivasvisualstudio.in/",
+        "url": "https://nivasvisualstudio.in/main.html",
         "logo": "https://nivasvisualstudio.in/assets/favicon.png",
         "image": "https://nivasvisualstudio.in/images/hero_bg.jpg",
         "description": "Independent graphic design studio offering logo design, redraw and product design.",
@@ -58,7 +58,7 @@
       {
         "@type": "WebSite",
         "@id": "https://nivasvisualstudio.in/#website",
-        "url": "https://nivasvisualstudio.in/",
+        "url": "https://nivasvisualstudio.in/main.html",
         "name": "Nivas Visual Studio",
         "publisher": { "@id": "https://nivasvisualstudio.in/#org" },
         "inLanguage": "en"
@@ -67,299 +67,347 @@
   }
   </script>
 
+  <script>
+  // Reloading main.html replays the intro animation
+  (function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    var isReload = nav ? nav.type === 'reload'
+                       : !!(performance.navigation && performance.navigation.type === 1);
+    if (isReload) {
+      location.replace(location.pathname.replace(/[^\/]*$/, '') + 'index.html');
+    }
+  })();
+  </script>
+
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preload" href="fonts/DecadenceStraight.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/Gotham-Bold.otf" as="font" type="font/otf" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <section class="hero" id="home">
-    <div class="hero-media">
-      <img src="images/hero_bg.jpg" alt="" role="presentation">
-    </div>
-
-    <div class="hero-content">
-      <h1 class="sr-only">Nivas Visual Studio &ndash; Logo Design, Redraw &amp; Product Design Studio</h1>
-      <img src="assets/logo.svg" alt="Nivas Visual Studio" class="hero-logo">
-    </div>
-
-    <div class="scroll-cue">
-      SCROLL
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M6 9l6 6 6-6"/>
-      </svg>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <p class="page-eyebrow reveal">ABOUT <span class="brand-name">NIVAS VISUAL STUDIO</span></p>
-
-      <div class="about-grid">
-        <h2 class="about-headline reveal">We turn ideas into visual identities.</h2>
-
-        <div class="about-copy reveal">
-          <p><span class="brand-name">NIVAS VISUAL STUDIO</span> is an independent graphic design studio focused on creating clean, distinctive and purposeful visual designs for brands, products and creative ideas.</p>
-
-          <p>We transform concepts into visuals that are clear, memorable and professionally crafted &mdash; from developing a new logo to refining existing artwork and creating compelling product designs.</p>
-
-          <p>Our studio works across three core areas:</p>
-
-          <p class="pillars">Logo Design &bull; Redraw &bull; Product Design</p>
-
-          <p>We believe great design is more than visual appearance. It is about understanding the idea behind the design, the audience it needs to reach and the message it needs to communicate.</p>
-
-          <p>Every project is approached with attention to simplicity, proportion, detail, consistency and visual impact.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" style="background: var(--color-paper-dim);">
-    <div class="container">
-      <p class="page-eyebrow reveal">WHAT WE CREATE</p>
-      <h2 class="section-heading reveal">Three disciplines, one design language.</h2>
-
-      <div class="service-block reveal">
-        <div class="service-copy">
-          <p class="service-number">01</p>
-          <h3 class="service-title">Logo Design</h3>
-          <p class="service-subtitle">Building identities that are easy to recognize.</p>
-          <p class="service-desc">A logo is often the first impression a brand makes. We design original marks that are simple enough to be remembered and versatile enough to work everywhere a brand shows up.</p>
-
-          <ul class="service-list">
-            <li>Original logo concepts</li>
-            <li>Minimal and modern identities</li>
-            <li>Typography and symbol development</li>
-            <li>Color direction</li>
-            <li>Scalable and versatile designs</li>
-            <li>Professional final artwork</li>
-          </ul>
-        </div>
-
-        <div class="service-figure">
-          <img src="images/logo/Nivas sketch app logo.svg" alt="Logo design sample: Nivas sketch app logo by Nivas Visual Studio" loading="lazy">
-        </div>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-media">
+        <img src="images/hero_bg.jpg" alt="" role="presentation" fetchpriority="high">
       </div>
 
-      <div class="service-block is-reversed reveal">
-        <div class="service-copy">
-          <p class="service-number">02</p>
-          <h3 class="service-title">Redraw</h3>
-          <p class="service-subtitle">Rebuilding visuals with precision.</p>
-          <p class="service-desc">Old logos, scanned artwork and low-resolution files hold brands back. We rebuild existing visuals into clean, sharp, print-ready artwork without losing what made the original work.</p>
-
-          <ul class="service-list">
-            <li>Logo redraw</li>
-            <li>Vector recreation</li>
-            <li>Image-to-vector conversion</li>
-            <li>Shape and line refinement</li>
-            <li>Detail cleanup</li>
-            <li>High-resolution artwork</li>
-          </ul>
-        </div>
-
-        <div class="service-figure">
-          <img src="images/redraw/California Police Batch.svg" alt="Redraw sample: California police badge recreated as clean vector artwork" loading="lazy">
-        </div>
+      <div class="hero-content">
+        <h1 class="sr-only">Nivas Visual Studio &ndash; Logo Design, Redraw &amp; Product Design Studio</h1>
+        <img src="assets/logo.svg" alt="Nivas Visual Studio" class="hero-logo">
+        <p class="hero-tagline">A Creative Home for Visual Design</p>
       </div>
 
-      <div class="service-block reveal">
-        <div class="service-copy">
-          <p class="service-number">03</p>
-          <h3 class="service-title">Product Design</h3>
-          <p class="service-subtitle">Turning product ideas into visual concepts.</p>
-          <p class="service-desc">Before a product is manufactured, it needs to be seen. We design product concepts, mockups and promotional visuals that help ideas move from sketch to shelf-ready.</p>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About">
+        SCROLL
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </section>
 
-          <ul class="service-list">
-            <li>Product concept design</li>
-            <li>Product appearance</li>
-            <li>Visual detailing</li>
-            <li>Product presentation</li>
-            <li>Mockup development</li>
-            <li>Promotional product visuals</li>
-          </ul>
-        </div>
+    <section id="about">
+      <div class="container">
+        <p class="page-eyebrow reveal">ABOUT <span class="brand-name">NIVAS VISUAL STUDIO</span></p>
 
-        <div class="service-figure">
-          <img src="images/product/24th Birthday Bottle.png" alt="Product design sample: 24th birthday bottle design concept" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="about-grid">
+          <h2 class="about-headline reveal">We turn ideas into visual identities.</h2>
 
-  <section id="approach">
-    <div class="container">
-      <p class="page-eyebrow reveal">OUR APPROACH</p>
-      <h2 class="section-heading reveal">From idea to finished artwork.</h2>
-    </div>
+          <div class="about-copy reveal">
+            <p><span class="brand-name">NIVAS VISUAL STUDIO</span> is an independent graphic design studio focused on creating clean, distinctive and purposeful visual designs for brands, products and creative ideas.</p>
 
-    <div class="container reveal">
-      <div class="process-grid">
-        <div class="process-step">
-          <p class="process-number">01</p>
-          <h3 class="process-title">Discover</h3>
-          <p class="process-desc">Understand the idea, requirements, audience, and purpose.</p>
-        </div>
+            <p>We transform concepts into visuals that are clear, memorable and professionally crafted &mdash; from developing a new logo to refining existing artwork and creating compelling product designs.</p>
 
-        <div class="process-step">
-          <p class="process-number">02</p>
-          <h3 class="process-title">Design</h3>
-          <p class="process-desc">Develop visual concepts, typography, proportions, and creative directions.</p>
-        </div>
+            <p>Our studio works across three core areas:</p>
 
-        <div class="process-step">
-          <p class="process-number">03</p>
-          <h3 class="process-title">Refine</h3>
-          <p class="process-desc">Improve details, consistency, spacing, and visual quality.</p>
-        </div>
+            <p class="pillars">Logo Design &bull; Redraw &bull; Product Design</p>
 
-        <div class="process-step">
-          <p class="process-number">04</p>
-          <h3 class="process-title">Deliver</h3>
-          <p class="process-desc">Prepare polished artwork for digital, presentation, or print use.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            <p>We believe great design is more than visual appearance. It is about understanding the idea behind the design, the audience it needs to reach and the message it needs to communicate.</p>
 
-  <section id="principles" style="background: var(--color-paper-dim);">
-    <div class="container">
-      <p class="page-eyebrow reveal">OUR DESIGN PRINCIPLES</p>
-
-      <div class="principles-list reveal">
-        <div class="principle-row">
-          <h3 class="principle-name">Simplicity</h3>
-          <p class="principle-desc">Remove unnecessary elements and communicate clearly.</p>
-        </div>
-
-        <div class="principle-row">
-          <h3 class="principle-name">Precision</h3>
-          <p class="principle-desc">Carefully consider proportions, alignment, spacing, and geometry.</p>
-        </div>
-
-        <div class="principle-row">
-          <h3 class="principle-name">Consistency</h3>
-          <p class="principle-desc">Maintain a recognizable visual language across applications.</p>
-        </div>
-
-        <div class="principle-row">
-          <h3 class="principle-name">Purpose</h3>
-          <p class="principle-desc">Every design element should support the overall idea.</p>
-        </div>
-
-        <div class="principle-row">
-          <h3 class="principle-name">Impact</h3>
-          <p class="principle-desc">Create a clear and memorable visual impression.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="vision" id="vision">
-    <div class="container">
-      <p class="page-eyebrow reveal" style="color: rgba(255,255,255,0.5);">OUR VISION</p>
-      <h2 class="vision-statement reveal">Make every product look like a brand.</h2>
-      <p class="vision-copy reveal">A product without a clear visual identity struggles to be noticed, trusted or remembered. Our vision is to help ideas, products and businesses of any size present themselves with the same clarity and confidence as an established brand &mdash; through design that is thoughtful, consistent and built to last.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="core-services reveal">
-        <div class="core-service">
-          <h3>Logo Design</h3>
-          <p>Creating distinctive visual identities.</p>
-        </div>
-
-        <div class="core-service">
-          <h3>Redraw</h3>
-          <p>Recreating existing artwork with precision.</p>
-        </div>
-
-        <div class="core-service">
-          <h3>Product Design</h3>
-          <p>Transforming product ideas into compelling visuals.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio" style="background: var(--color-paper-dim);">
-    <div class="container">
-      <p class="page-eyebrow reveal">PORTFOLIO</p>
-      <h2 class="section-heading reveal">Explore the work.</h2>
-
-      <div class="portfolio-grid reveal">
-        <a href="logo-design.html" class="portfolio-card">
-          <img src="images/Logo Design.png" alt="Logo design portfolio by Nivas Visual Studio" loading="lazy">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-name">Logo Design</h3>
-            <p class="portfolio-tag">Distinctive identities built to be remembered.</p>
+            <p>Every project is approached with attention to simplicity, proportion, detail, consistency and visual impact.</p>
           </div>
-        </a>
-
-        <a href="redraw.html" class="portfolio-card">
-          <img src="images/Redraw Design.png" alt="Redraw and vector recreation portfolio by Nivas Visual Studio" loading="lazy">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-name">Redraw</h3>
-            <p class="portfolio-tag">Existing visuals recreated with precision and attention to detail.</p>
-          </div>
-        </a>
-
-        <a href="product-design.html" class="portfolio-card">
-          <img src="images/Product Design.png" alt="Product design portfolio by Nivas Visual Studio" loading="lazy">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-name">Product Design</h3>
-            <p class="portfolio-tag">Visual concepts that bring products to life.</p>
-          </div>
-        </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="testimonials">
-    <div class="container">
-      <div class="testimonials-head reveal">
-        <div>
-          <p class="page-eyebrow">TESTIMONIALS</p>
-          <h2 class="section-heading" style="margin-bottom:0;">What clients say.</h2>
+    <section id="services" class="section-alt">
+      <div class="container">
+        <p class="page-eyebrow reveal">WHAT WE CREATE</p>
+        <h2 class="section-heading reveal">Three disciplines, one design language.</h2>
+
+        <div class="service-block reveal">
+          <div class="service-copy">
+            <p class="service-number">01</p>
+            <h3 class="service-title">Logo Design</h3>
+            <p class="service-subtitle">Building identities that are easy to recognize.</p>
+            <p class="service-desc">A logo is often the first impression a brand makes. We design original marks that are simple enough to be remembered and versatile enough to work everywhere a brand shows up.</p>
+
+            <ul class="service-list">
+              <li>Original logo concepts</li>
+              <li>Minimal and modern identities</li>
+              <li>Typography and symbol development</li>
+              <li>Color direction</li>
+              <li>Scalable and versatile designs</li>
+              <li>Professional final artwork</li>
+            </ul>
+          </div>
+
+          <div class="service-figure">
+            <img class="fit-contain" src="images/logo/Nivas sketch app logo.svg" alt="Logo design sample: Nivas sketch app logo by Nivas Visual Studio" loading="lazy">
+          </div>
         </div>
 
-        <button class="btn btn-outline" id="open-review-modal" type="button">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
-            <line x1="16" y1="8" x2="2" y2="22"/>
-            <line x1="17.5" y1="15" x2="9" y2="15"/>
-          </svg>
-          Write a Review
-        </button>
+        <div class="service-block is-reversed reveal">
+          <div class="service-copy">
+            <p class="service-number">02</p>
+            <h3 class="service-title">Redraw</h3>
+            <p class="service-subtitle">Rebuilding visuals with precision.</p>
+            <p class="service-desc">Old logos, scanned artwork and low-resolution files hold brands back. We rebuild existing visuals into clean, sharp, print-ready artwork without losing what made the original work.</p>
+
+            <ul class="service-list">
+              <li>Logo redraw</li>
+              <li>Vector recreation</li>
+              <li>Image-to-vector conversion</li>
+              <li>Shape and line refinement</li>
+              <li>Detail cleanup</li>
+              <li>High-resolution artwork</li>
+            </ul>
+          </div>
+
+          <div class="service-figure">
+            <img class="fit-contain" src="images/redraw/California Police Batch.svg" alt="Redraw sample: California police badge recreated as clean vector artwork" loading="lazy">
+          </div>
+        </div>
+
+        <div class="service-block reveal">
+          <div class="service-copy">
+            <p class="service-number">03</p>
+            <h3 class="service-title">Product Design</h3>
+            <p class="service-subtitle">Turning product ideas into visual concepts.</p>
+            <p class="service-desc">Before a product is manufactured, it needs to be seen. We design product concepts, mockups and promotional visuals that help ideas move from sketch to shelf-ready.</p>
+
+            <ul class="service-list">
+              <li>Product concept design</li>
+              <li>Product appearance</li>
+              <li>Visual detailing</li>
+              <li>Product presentation</li>
+              <li>Mockup development</li>
+              <li>Promotional product visuals</li>
+            </ul>
+          </div>
+
+          <div class="service-figure">
+            <img src="images/product/24th Birthday Bottle.png" alt="Product design sample: 24th birthday bottle design concept" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <p class="page-eyebrow reveal">OUR APPROACH</p>
+        <h2 class="section-heading reveal">From idea to finished artwork.</h2>
       </div>
 
-      <div class="testimonial-grid reveal" id="testimonial-grid"></div>
-    </div>
-  </section>
+      <div class="container reveal">
+        <div class="process-grid">
+          <div class="process-step">
+            <p class="process-number">01</p>
+            <h3 class="process-title">Discover</h3>
+            <p class="process-desc">Understand the idea, requirements, audience, and purpose.</p>
+          </div>
 
-  <div class="modal-overlay" id="review-modal">
+          <div class="process-step">
+            <p class="process-number">02</p>
+            <h3 class="process-title">Design</h3>
+            <p class="process-desc">Develop visual concepts, typography, proportions, and creative directions.</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-number">03</p>
+            <h3 class="process-title">Refine</h3>
+            <p class="process-desc">Improve details, consistency, spacing, and visual quality.</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-number">04</p>
+            <h3 class="process-title">Deliver</h3>
+            <p class="process-desc">Prepare polished artwork for digital, presentation, or print use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles" class="section-alt">
+      <div class="container">
+        <p class="page-eyebrow reveal">OUR DESIGN PRINCIPLES</p>
+
+        <div class="principles-list reveal">
+          <div class="principle-row">
+            <h3 class="principle-name">Simplicity</h3>
+            <p class="principle-desc">Remove unnecessary elements and communicate clearly.</p>
+          </div>
+
+          <div class="principle-row">
+            <h3 class="principle-name">Precision</h3>
+            <p class="principle-desc">Carefully consider proportions, alignment, spacing, and geometry.</p>
+          </div>
+
+          <div class="principle-row">
+            <h3 class="principle-name">Consistency</h3>
+            <p class="principle-desc">Maintain a recognizable visual language across applications.</p>
+          </div>
+
+          <div class="principle-row">
+            <h3 class="principle-name">Purpose</h3>
+            <p class="principle-desc">Every design element should support the overall idea.</p>
+          </div>
+
+          <div class="principle-row">
+            <h3 class="principle-name">Impact</h3>
+            <p class="principle-desc">Create a clear and memorable visual impression.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vision" id="vision">
+      <div class="container">
+        <p class="page-eyebrow reveal">OUR VISION</p>
+        <h2 class="vision-statement reveal">Make every product look like a brand.</h2>
+        <p class="vision-copy reveal">A product without a clear visual identity struggles to be noticed, trusted or remembered. Our vision is to help ideas, products and businesses of any size present themselves with the same clarity and confidence as an established brand &mdash; through design that is thoughtful, consistent and built to last.</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section-alt">
+      <div class="container">
+        <p class="page-eyebrow reveal">PORTFOLIO</p>
+        <h2 class="section-heading reveal">Explore the work.</h2>
+
+        <div class="portfolio-grid reveal">
+          <a href="logo-design.html" class="portfolio-card">
+            <img src="images/Logo Design.png" alt="" loading="lazy">
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-name">Logo Design</h3>
+              <p class="portfolio-tag">Distinctive identities built to be remembered.</p>
+            </div>
+          </a>
+
+          <a href="redraw.html" class="portfolio-card">
+            <img src="images/Redraw Design.png" alt="" loading="lazy">
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-name">Redraw</h3>
+              <p class="portfolio-tag">Existing visuals recreated with precision and attention to detail.</p>
+            </div>
+          </a>
+
+          <a href="product-design.html" class="portfolio-card">
+            <img src="images/Product Design.png" alt="" loading="lazy">
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-name">Product Design</h3>
+              <p class="portfolio-tag">Visual concepts that bring products to life.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="testimonials-head reveal">
+          <div>
+            <p class="page-eyebrow">TESTIMONIALS</p>
+            <h2 class="section-heading" style="margin-bottom:0;">What clients say.</h2>
+          </div>
+
+          <button class="btn btn-outline" id="open-review-modal" type="button" aria-haspopup="dialog">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+              <line x1="16" y1="8" x2="2" y2="22"/>
+              <line x1="17.5" y1="15" x2="9" y2="15"/>
+            </svg>
+            Write a Review
+          </button>
+        </div>
+
+        <div class="testimonial-grid reveal" id="testimonial-grid"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-alt">
+      <div class="container">
+        <p class="page-eyebrow reveal">CONTACT</p>
+
+        <div class="contact-grid">
+          <div class="reveal">
+            <h2 class="contact-statement">Have an idea, artwork or product concept that needs to be refined?</h2>
+
+            <ul class="contact-channels">
+              <li>Email: <a href="mailto:contact.nivasvisuals@gmail.com">contact.nivasvisuals@gmail.com</a></li>
+              <li>Phone: <a href="tel:+918681084218">+91 8681084218</a></li>
+            </ul>
+          </div>
+
+          <form id="contact-form" class="reveal" method="POST" action="https://formsubmit.co/contact.nivasvisuals@gmail.com">
+            <input type="hidden" name="_subject" value="New inquiry from NIVAS VISUAL STUDIO website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-project">Project Type</label>
+              <select id="contact-project" name="Project Type">
+                <option>Logo Design</option>
+                <option>Redraw</option>
+                <option>Product Design</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="Message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Send Inquiry</button>
+
+            <p class="form-success" id="contact-success" role="status">Thanks &mdash; your message has been sent. We'll get back to you soon.</p>
+
+            <p class="form-success is-error" id="contact-error" role="alert">Something went wrong sending that &mdash; please email contact.nivasvisuals@gmail.com directly.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="review-modal" inert>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
       <div class="modal-head">
-        <h3 id="review-modal-title" style="font-size:1.25rem;">Write a Review</h3>
+        <h3 id="review-modal-title" class="modal-title">Write a Review</h3>
         <button class="modal-close" id="close-review-modal" type="button" aria-label="Close">&times;</button>
       </div>
 
-      <form id="review-form">
+      <form id="review-form" method="POST" action="https://formsubmit.co/contact.nivasvisuals@gmail.com">
         <input type="hidden" name="_subject" value="New testimonial on NIVAS VISUAL STUDIO website">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <input type="text" id="review-website" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="text" class="hp" id="review-website" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="form-field">
           <label for="review-name">Your Name</label>
-          <input type="text" id="review-name" name="Name" required>
+          <input type="text" id="review-name" name="Name" autocomplete="name" required>
         </div>
 
         <div class="form-field">
@@ -372,67 +420,12 @@
           <textarea id="review-text" name="Review" required></textarea>
         </div>
 
-        <p class="form-success" id="review-status"></p>
+        <p class="form-success" id="review-status" role="status"></p>
 
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Review</button>
+        <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
       </form>
     </div>
   </div>
-
-  <section id="contact" style="background: var(--color-paper-dim);">
-    <div class="container">
-      <p class="page-eyebrow reveal">CONTACT</p>
-
-      <div class="contact-grid">
-        <div class="reveal">
-          <h2 class="contact-statement">Have an idea, artwork or product concept that needs to be refined?</h2>
-
-          <ul class="contact-channels">
-            <li>Mail to : <a href="mailto:contact.nivasvisuals@gmail.com">contact.nivasvisuals@gmail.com</a></li>
-            <li>Mobile No : <a href="tel:+918681084218">+91 8681084218</a></li>
-          </ul>
-        </div>
-
-        <form id="contact-form" class="reveal">
-          <input type="hidden" name="_subject" value="New inquiry from NIVAS VISUAL STUDIO website">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-          <div class="form-field">
-            <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" required>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" name="email" required>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-project">Project Type</label>
-            <select id="contact-project" name="Project Type">
-              <option>Logo Design</option>
-              <option>Redraw</option>
-              <option>Product Design</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="Message" required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Inquiry</button>
-
-          <p class="form-success" id="contact-success">Thanks &mdash; your message has been sent. We'll get back to you soon.</p>
-
-          <p class="form-success" id="contact-error" style="background:#fdecea; color:#b3261e;">Something went wrong sending that &mdash; please email contact.nivasvisuals@gmail.com directly.</p>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <footer class="site-footer">
     <div class="container">
@@ -444,11 +437,11 @@
         </div>
 
         <ul class="footer-social">
-          <li><a href="https://www.behance.net/srinivachinnad" target="_blank" rel="noopener">Behance</a></li>
-          <li><a href="https://www.fiverr.com/nivas_san_" target="_blank" rel="noopener">Fiverr</a></li>
-          <li><a href="https://www.instagram.com/nivas_visuals?stkn=MXJjbTNqYXFpa2Yycw==" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/nivas-visual-studio-7a949943b" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://pin.it/4zKWXtsOT" target="_blank" rel="noopener">Pinterest</a></li>
+          <li><a href="https://www.behance.net/nivasvisualstudio" target="_blank" rel="noopener noreferrer">Behance</a></li>
+          <li><a href="https://www.fiverr.com/nivas_san_" target="_blank" rel="noopener noreferrer">Fiverr</a></li>
+          <li><a href="https://www.instagram.com/nivas_visual_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/nivasvisualstudio" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://in.pinterest.com/nivasvisualstudio" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
         </ul>
       </div>
 
@@ -459,30 +452,6 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script>
-  (function () {
-    // Stop the browser from restoring the old scroll position
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    // Detect a reload
-    var nav = performance.getEntriesByType('navigation')[0];
-    var isReload = nav ? nav.type === 'reload'
-                       : performance.navigation && performance.navigation.type === 1;
-
-    if (isReload) {
-      // Go to index.html without the #hash (e.g. #portfolio)
-      var path = location.pathname;
-      var target = path.replace(/[^\/]*$/, '') + 'index.html';
-      if (path !== target || location.hash) {
-        location.replace(target);   // replace so Back button doesn't loop
-      } else {
-        window.scrollTo(0, 0);
-      }
-    }
-  })();
-  </script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
