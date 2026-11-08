@@ -478,6 +478,10 @@ select:focus-visible {
 .js #open-review-modal { display: inline-flex; }
 
 /* ---------- Testimonials ---------- */
+.testimonials-heading {
+  margin-bottom: 0;
+}
+
 .testimonials-head {
   display: flex;
   align-items: flex-end;
