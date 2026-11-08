@@ -72,6 +72,7 @@
 
   <link rel="preload" href="fonts/DecadenceStraight.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/Gotham-Bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" as="image" href="images/hero_bg.jpg" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -80,7 +81,7 @@
   <main id="main">
     <section class="hero" id="home">
       <div class="hero-media">
-        <img src="images/hero_bg.jpg" alt="" role="presentation" fetchpriority="high">
+        <img src="images/hero_bg.jpg" alt="" role="presentation" fetchpriority="high" loading="eager" decoding="async">
       </div>
 
       <div class="hero-content">
