@@ -895,3 +895,82 @@ select:focus-visible {
   .scroll-cue { display: none; }
   .hero-logo { width: 100px; margin-bottom: 1rem; }
 }
+
+<style>
+html { scroll-behavior: smooth; }
+ 
+.floating-contact {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);   /* keeps it visible on dark sections */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  text-decoration: none;
+  animation: fc-float 3s ease-in-out infinite;
+  transition: transform 0.2s ease, opacity 0.3s ease, visibility 0.3s;
+}
+.floating-contact:hover,
+.floating-contact:focus-visible { transform: scale(1.1); }
+.floating-contact svg { width: 24px; height: 24px; }
+ 
+/* Pulse ring */
+.floating-contact::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: fc-pulse 2.4s infinite;
+}
+ 
+/* Tooltip */
+.floating-contact__tip {
+  position: absolute;
+  right: 66px;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.floating-contact:hover .floating-contact__tip,
+.floating-contact:focus-visible .floating-contact__tip { opacity: 1; }
+ 
+/* Hidden while the contact section is visible */
+.floating-contact.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+ 
+@keyframes fc-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -6px; }
+}
+@keyframes fc-pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+ 
+@media (max-width: 600px) {
+  .floating-contact { width: 50px; height: 50px; right: 16px; bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .floating-contact, .floating-contact::before { animation: none; }
+}
+</style>
