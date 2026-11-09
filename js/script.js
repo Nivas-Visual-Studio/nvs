@@ -281,3 +281,25 @@
     init();
   }
 })();
+
+<script>
+(function () {
+  var icon = document.getElementById('floating-contact');
+  var contact = document.getElementById('contact');
+  if (!icon || !contact) return;
+ 
+  // Hide the icon when the contact section is on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      icon.classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, { threshold: 0.15 }).observe(contact);
+  }
+ 
+  // Smooth scroll on click (works even if CSS smooth-scroll is overridden)
+  icon.addEventListener('click', function (e) {
+    e.preventDefault();
+    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', '#contact');
+  });
+})();
+</script>
